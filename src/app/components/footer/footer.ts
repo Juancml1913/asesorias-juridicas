@@ -11,8 +11,8 @@ export class Footer {
 
   quickLinks = [
     { label: 'Inicio', href: '#inicio' },
-    { label: 'Areas de Practica', href: '#areas' },
-    { label: 'Sobre Mi', href: '#sobre-mi' },
+    { label: 'Áreas de Práctica', href: '#areas' },
+    { label: 'Sobre Mí', href: '#sobre-mi' },
     { label: 'Servicios', href: '#servicios' },
     { label: 'Contacto', href: '#contacto' }
   ];
