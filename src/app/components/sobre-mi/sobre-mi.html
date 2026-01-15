@@ -1,0 +1,68 @@
+<section class="about section" id="sobre-mi">
+  <div class="container">
+    <div class="about__grid">
+      <div class="about__image">
+        <div class="about__image-wrapper">
+          <div class="about__image-placeholder">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1">
+              <path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2" />
+              <circle cx="12" cy="7" r="4" />
+            </svg>
+            <span>Daniela David Martinez</span>
+          </div>
+          <div class="about__image-accent"></div>
+        </div>
+        <div class="about__experience">
+          <span class="about__experience-number">15+</span>
+          <span class="about__experience-text">Años de<br />Experiencia</span>
+        </div>
+      </div>
+
+      <div class="about__content">
+        <span class="about__label">Sobre Mi</span>
+        <h2 class="about__title">Daniela David Martinez</h2>
+        <p class="about__subtitle">Abogada Litigante y Consultora Legal</p>
+
+        <p class="about__text">
+          Con mas de 15 años de trayectoria profesional, me he dedicado a brindar asesoria juridica
+          integral a particulares y empresas. Mi enfoque combina un profundo conocimiento del
+          derecho con un compromiso genuino por defender los intereses de mis clientes.
+        </p>
+
+        <p class="about__text">
+          Creo firmemente que cada caso merece atencion personalizada y estrategias juridicas
+          adaptadas a las necesidades especificas de cada cliente. Mi objetivo es proporcionar
+          soluciones legales efectivas, siempre guiada por los mas altos estandares eticos de la
+          profesion.
+        </p>
+
+        <div class="about__credentials">
+          @for (credential of credentials; track credential.label) {
+          <div class="credential">
+            <svg
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.5"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <path [attr.d]="credential.icon" />
+            </svg>
+            <span>{{ credential.label }}</span>
+          </div>
+          }
+        </div>
+
+        <div class="about__values">
+          @for (value of values; track value.title) {
+          <div class="value">
+            <h4 class="value__title">{{ value.title }}</h4>
+            <p class="value__description">{{ value.description }}</p>
+          </div>
+          }
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

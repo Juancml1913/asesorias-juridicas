@@ -1,0 +1,44 @@
+<header class="header" [class.scrolled]="isScrolled()">
+  <div class="container">
+    <nav class="nav">
+      <a href="#inicio" class="logo">
+        <span class="logo__icon">
+          <svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M20 4L4 12v4l16 8 16-8v-4L20 4z" fill="currentColor" opacity="0.9"/>
+            <path d="M4 20v4l16 8 16-8v-4l-16 8-16-8z" fill="currentColor" opacity="0.6"/>
+            <path d="M4 28v4l16 8 16-8v-4l-16 8-16-8z" fill="currentColor" opacity="0.3"/>
+          </svg>
+        </span>
+        <span class="logo__text">
+          <span class="logo__name">Daniela David</span>
+          <span class="logo__title">Abogada</span>
+        </span>
+      </a>
+
+      <ul class="nav__menu" [class.active]="isMobileMenuOpen()">
+        @for (item of navItems; track item.href) {
+          <li class="nav__item">
+            <a [href]="item.href" class="nav__link" (click)="closeMobileMenu()">
+              {{ item.label }}
+            </a>
+          </li>
+        }
+        <li class="nav__item nav__item--cta">
+          <a href="#contacto" class="btn btn--primary" (click)="closeMobileMenu()">
+            Consulta Gratuita
+          </a>
+        </li>
+      </ul>
+
+      <button
+        class="nav__toggle"
+        [class.active]="isMobileMenuOpen()"
+        (click)="toggleMobileMenu()"
+        aria-label="Menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </nav>
+  </div>
+</header>

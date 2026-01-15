@@ -1,0 +1,57 @@
+<section class="hero" id="inicio">
+  <div class="hero__overlay"></div>
+  <div class="hero__pattern"></div>
+
+  <div class="container">
+    <div class="hero__grid">
+      <div class="hero__content">
+        <span class="hero__badge">Asesoría Jurídica Profesional</span>
+        <h1 class="hero__title">
+          Defendemos sus <span class="highlight">Derechos</span> con Compromiso y Excelencia
+        </h1>
+        <p class="hero__text">
+          Soy Daniela David Martínez, abogada con más de 15 años de experiencia brindando asesoría
+          legal integral. Mi compromiso es proteger sus intereses con dedicación, ética profesional
+          y resultados comprobados.
+        </p>
+
+        <div class="hero__actions">
+          <a href="#contacto" class="btn btn--primary">Agendar Consulta</a>
+          <a href="#areas" class="btn btn--secondary">Ver Áreas de Práctica</a>
+        </div>
+
+        <div class="hero__stats">
+          @for (stat of stats; track stat.label) {
+          <div class="stat">
+            <span class="stat__value">{{ stat.value }}</span>
+            <span class="stat__label">{{ stat.label }}</span>
+          </div>
+          }
+        </div>
+      </div>
+
+      <div class="hero__logo">
+        <div class="hero__logo-wrapper">
+          <img src="logo-legal.jpg" alt="Daniela David Martinez - Abogada" />
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="hero__scroll">
+    <a href="#areas" class="scroll-indicator">
+      <span class="scroll-indicator__text">Explorar</span>
+      <span class="scroll-indicator__icon">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+          <path
+            d="M12 5v14M5 12l7 7 7-7"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          />
+        </svg>
+      </span>
+    </a>
+  </div>
+</section>

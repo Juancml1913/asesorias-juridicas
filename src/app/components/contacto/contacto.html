@@ -1,0 +1,121 @@
+<section class="contacto section" id="contacto">
+  <div class="container">
+    <h2 class="section-title">Contactenos</h2>
+    <p class="section-subtitle">
+      Estamos aqui para ayudarle. Agende una consulta gratuita y
+      permita que analicemos su caso sin compromiso.
+    </p>
+
+    <div class="contacto__grid">
+      <div class="contacto__info">
+        <div class="contacto__info-header">
+          <h3>Informacion de Contacto</h3>
+          <p>Contactenos por cualquiera de estos medios o complete el formulario.</p>
+        </div>
+
+        <div class="contacto__details">
+          @for (info of contactInfo; track info.label) {
+            <div class="contact-item">
+              <div class="contact-item__icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                  <path [attr.d]="info.icon"/>
+                </svg>
+              </div>
+              <div class="contact-item__content">
+                <span class="contact-item__label">{{ info.label }}</span>
+                <span class="contact-item__value">{{ info.value }}</span>
+              </div>
+            </div>
+          }
+        </div>
+
+        <div class="contacto__cta">
+          <p>Primera consulta <strong>GRATUITA</strong></p>
+          <span>Evaluamos su caso sin compromiso</span>
+        </div>
+      </div>
+
+      <div class="contacto__form-wrapper">
+        @if (formSubmitted()) {
+          <div class="form-success">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+            </svg>
+            <h4>Mensaje Enviado</h4>
+            <p>Gracias por contactarnos. Nos comunicaremos con usted a la brevedad.</p>
+          </div>
+        } @else {
+          <form class="contacto__form" (ngSubmit)="onSubmit()">
+            <div class="form-row">
+              <div class="form-group">
+                <label for="nombre">Nombre Completo</label>
+                <input
+                  type="text"
+                  id="nombre"
+                  name="nombre"
+                  [(ngModel)]="formData().nombre"
+                  placeholder="Su nombre"
+                  required>
+              </div>
+              <div class="form-group">
+                <label for="email">Correo Electronico</label>
+                <input
+                  type="email"
+                  id="email"
+                  name="email"
+                  [(ngModel)]="formData().email"
+                  placeholder="correo@ejemplo.com"
+                  required>
+              </div>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label for="telefono">Telefono</label>
+                <input
+                  type="tel"
+                  id="telefono"
+                  name="telefono"
+                  [(ngModel)]="formData().telefono"
+                  placeholder="+52 (55) 0000-0000">
+              </div>
+              <div class="form-group">
+                <label for="asunto">Area de Consulta</label>
+                <select
+                  id="asunto"
+                  name="asunto"
+                  [(ngModel)]="formData().asunto"
+                  required>
+                  <option value="" disabled>Seleccione un area</option>
+                  @for (asunto of asuntos; track asunto) {
+                    <option [value]="asunto">{{ asunto }}</option>
+                  }
+                </select>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="mensaje">Mensaje</label>
+              <textarea
+                id="mensaje"
+                name="mensaje"
+                [(ngModel)]="formData().mensaje"
+                placeholder="Describa brevemente su situacion..."
+                rows="5"
+                required></textarea>
+            </div>
+
+            <button type="submit" class="btn btn--primary btn--full">
+              Enviar Mensaje
+            </button>
+
+            <p class="form-disclaimer">
+              Al enviar este formulario, acepta nuestra politica de privacidad.
+              Sus datos seran tratados con total confidencialidad.
+            </p>
+          </form>
+        }
+      </div>
+    </div>
+  </div>
+</section>

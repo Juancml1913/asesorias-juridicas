@@ -1,0 +1,48 @@
+<section class="servicios section" id="servicios">
+  <div class="container">
+    <h2 class="section-title">Nuestros Servicios</h2>
+    <p class="section-subtitle">
+      Soluciones juridicas integrales adaptadas a sus necesidades,
+      con un enfoque personalizado y resultados efectivos.
+    </p>
+
+    <div class="servicios__grid">
+      @for (servicio of servicios; track servicio.title) {
+        <div class="service-card">
+          <div class="service-card__header">
+            <div class="service-card__icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                <path [attr.d]="servicio.icon"/>
+              </svg>
+            </div>
+            <h3 class="service-card__title">{{ servicio.title }}</h3>
+          </div>
+          <p class="service-card__description">{{ servicio.description }}</p>
+          <ul class="service-card__features">
+            @for (feature of servicio.features; track feature) {
+              <li>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M5 13l4 4L19 7"/>
+                </svg>
+                {{ feature }}
+              </li>
+            }
+          </ul>
+        </div>
+      }
+    </div>
+
+    <div class="proceso">
+      <h3 class="proceso__title">Como Trabajamos</h3>
+      <div class="proceso__steps">
+        @for (paso of proceso; track paso.number) {
+          <div class="proceso__step">
+            <span class="proceso__number">{{ paso.number }}</span>
+            <h4 class="proceso__step-title">{{ paso.title }}</h4>
+            <p class="proceso__step-description">{{ paso.description }}</p>
+          </div>
+        }
+      </div>
+    </div>
+  </div>
+</section>

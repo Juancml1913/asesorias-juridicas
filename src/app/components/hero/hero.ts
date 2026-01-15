@@ -1,0 +1,15 @@
+import { Component } from '@angular/core';
+
+@Component({
+  selector: 'app-hero',
+  imports: [],
+  templateUrl: './hero.html',
+  styleUrl: './hero.scss',
+})
+export class Hero {
+  stats = [
+    { value: '15+', label: 'Años de Experiencia' },
+    { value: '500+', label: 'Casos Resueltos' },
+    { value: '98%', label: 'Clientes Satisfechos' },
+  ];
+}

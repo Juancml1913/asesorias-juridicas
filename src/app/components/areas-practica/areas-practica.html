@@ -1,0 +1,29 @@
+<section class="areas section" id="areas">
+  <div class="container">
+    <h2 class="section-title">Areas de Practica</h2>
+    <p class="section-subtitle">
+      Ofrecemos asesoria juridica especializada en todas las ramas del derecho
+      para proteger sus intereses con profesionalismo y dedicacion.
+    </p>
+
+    <div class="areas__grid">
+      @for (area of areas; track area.title) {
+        <div class="area-card">
+          <div class="area-card__icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <path [attr.d]="area.icon"/>
+            </svg>
+          </div>
+          <h3 class="area-card__title">{{ area.title }}</h3>
+          <p class="area-card__description">{{ area.description }}</p>
+          <a href="#contacto" class="area-card__link">
+            Consultar
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M5 12h14M12 5l7 7-7 7"/>
+            </svg>
+          </a>
+        </div>
+      }
+    </div>
+  </div>
+</section>
