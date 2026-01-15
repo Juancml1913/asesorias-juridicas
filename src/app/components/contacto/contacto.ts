@@ -1,22 +1,26 @@
 import { Component, signal } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-contacto',
-  imports: [FormsModule],
+  imports: [ReactiveFormsModule],
   templateUrl: './contacto.html',
   styleUrl: './contacto.scss',
 })
 export class Contacto {
-  formData = signal({
-    nombre: '',
-    email: '',
-    telefono: '',
-    asunto: '',
-    mensaje: '',
-  });
-
+  contactForm: FormGroup;
   formSubmitted = signal(false);
+  private whatsappNumber = '573017038693';
+
+  constructor(private fb: FormBuilder) {
+    this.contactForm = this.fb.group({
+      nombre: ['', [Validators.required, Validators.minLength(3)]],
+      email: ['', [Validators.email]],
+      telefono: [''],
+      asunto: [''],
+      mensaje: ['', [Validators.required]],
+    });
+  }
 
   contactInfo = [
     {
@@ -50,17 +54,65 @@ export class Contacto {
     'Otro',
   ];
 
+  get f() {
+    return this.contactForm.controls;
+  }
+
+  isFieldInvalid(fieldName: string): boolean {
+    const field = this.contactForm.get(fieldName);
+    return !!(field && field.invalid && (field.dirty || field.touched));
+  }
+
+  getErrorMessage(fieldName: string): string {
+    const field = this.contactForm.get(fieldName);
+    if (!field) return '';
+
+    if (field.hasError('required')) {
+      return 'Este campo es obligatorio';
+    }
+    if (field.hasError('email')) {
+      return 'Ingrese un correo electrónico válido';
+    }
+    if (field.hasError('minlength')) {
+      const minLength = field.getError('minlength').requiredLength;
+      return `Debe tener al menos ${minLength} caracteres`;
+    }
+    return '';
+  }
+
   onSubmit(): void {
+    if (this.contactForm.invalid) {
+      this.contactForm.markAllAsTouched();
+      return;
+    }
+
+    const { nombre, email, telefono, asunto, mensaje } = this.contactForm.value;
+
+    const text = `
+*Nueva Consulta Legal*
+━━━━━━━━━━━━━━━━━━
+
+*Nombre:* ${nombre}
+*Email:* ${email}
+*Teléfono:* ${telefono || 'No proporcionado'}
+*Área de Consulta:* ${asunto}
+
+*Mensaje:*
+${mensaje}
+
+━━━━━━━━━━━━━━━━━━
+_Enviado desde el formulario web_
+    `.trim();
+
+    const encodedText = encodeURIComponent(text);
+    const whatsappUrl = `https://api.whatsapp.com/send?phone=${this.whatsappNumber}&text=${encodedText}`;
+
+    window.open(whatsappUrl, '_blank');
+
     this.formSubmitted.set(true);
     setTimeout(() => {
       this.formSubmitted.set(false);
-      this.formData.set({
-        nombre: '',
-        email: '',
-        telefono: '',
-        asunto: '',
-        mensaje: '',
-      });
-    }, 3000);
+      this.contactForm.reset();
+    }, 5000);
   }
 }
