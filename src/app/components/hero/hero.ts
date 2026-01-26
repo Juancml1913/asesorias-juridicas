@@ -8,8 +8,8 @@ import { Component } from '@angular/core';
 })
 export class Hero {
   stats = [
-    { value: '15+', label: 'Años de Experiencia' },
-    { value: '500+', label: 'Casos Resueltos' },
+    { value: '5+', label: 'Años de Experiencia' },
+    { value: '50+', label: 'Casos Resueltos' },
     { value: '98%', label: 'Clientes Satisfechos' },
   ];
 }
